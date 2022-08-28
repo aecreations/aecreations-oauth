@@ -2,7 +2,7 @@
   "name": "oauth-proxy-srv",
   "version": "1.0.0",
   "description": "AE Creations OAuth Proxy Server",
-  "main": "app.js",
+  "main": "src/app.js",
   "type": "module",
   "scripts": {
     "start": "node app.js",

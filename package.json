@@ -2,10 +2,10 @@
   "name": "oauth-proxy-srv",
   "version": "1.0.0",
   "description": "AE Creations OAuth Proxy Server",
-  "main": "src/app.js",
+  "main": "app.js",
   "type": "module",
   "scripts": {
-    "start": "node app.js",
+    "start": "node src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "AE Creations",

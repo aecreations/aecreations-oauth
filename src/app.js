@@ -56,6 +56,7 @@ app.post("/readnext/token", (aRequest, aResponse) => {
   getAccessToken("readnext", aRequest, aResponse);
 });
 
+
 function getAPIKey(aAppName, aRequest, aResponse)
 {
   let backnd;
@@ -251,7 +252,7 @@ async function getAccessToken(aAppName, aRequest, aResponse)
 
 function isValidService(aAuthzSrvKey)
 {
-  let rv = ["dropbox", "googledrive", "onedrive"].includes(aAuthzSrvKey);
+  let rv = ["dropbox"].includes(aAuthzSrvKey);
 
   return rv;
 }

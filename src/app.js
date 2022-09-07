@@ -71,6 +71,7 @@ function getAPIKey(aAppName, aRequest, aResponse)
         message: "Missing svc"
       }
     });
+    return;
   }
   
   let apiKey;
@@ -84,6 +85,7 @@ function getAPIKey(aAppName, aRequest, aResponse)
         message: `Unsupported value of svc: '${backnd}'`
       }
     });
+    return;
   }
 
   if (typeof apiKey == "string") {

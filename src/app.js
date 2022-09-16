@@ -116,10 +116,12 @@ async function getAccessToken(aAppName, aRequest, aResponse)
         message: "Missing svc and/or grant_type"
       }
     });
+    return;
   }
 
   if (! isValidService(backnd)) {
     aResponse.sendStatus(HTTP_STATUS_BAD_REQUEST);
+    return;
   }
   
   let requestParams;
@@ -143,6 +145,7 @@ async function getAccessToken(aAppName, aRequest, aResponse)
           message: `Missing code and/or redirect_uri (grant_type: '${grantType}')`
         }
       });
+      return;
     }
 
     requestParams.set("grant_type", "authorization_code");
@@ -159,6 +162,7 @@ async function getAccessToken(aAppName, aRequest, aResponse)
           message: "Missing refresh_token"
         }
       });
+      return;
     }
 
     requestParams.set("grant_type", "refresh_token");

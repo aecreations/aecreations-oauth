@@ -188,7 +188,7 @@ async function getAccessToken(aAppName, aRequest, aResponse)
 
     aResponse.status(HTTP_STATUS_SERVICE_UNAVAILABLE).json({
       error: {
-        name: "aeServerError",
+        name: "ServerError",
         message: "${e.name}: ${e.message}",
         source: tokenURL,
       }

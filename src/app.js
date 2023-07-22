@@ -7,6 +7,7 @@ const PORT = process.env.PORT || 3000;
 const HTTP_STATUS_BAD_REQUEST = 400;
 const HTTP_STATUS_UNAUTHORIZED = 401
 const HTTP_STATUS_INTERNAL_SERVER_ERROR = 500;
+const HTTP_STATUS_SERVICE_UNAVAILABLE = 503;
 
 
 let authzSrv = {
@@ -182,9 +183,19 @@ async function getAccessToken(aAppName, aRequest, aResponse)
     resp = await fetch(tokenURL, requestOpts);
   }
   catch (e) {
+    // An error may occur if the request to the authz server timed out.
     console.log("getAccessToken(): Exception thrown by fetch(): " + e);
+
+    aResponse.status(HTTP_STATUS_SERVICE_UNAVAILABLE).json({
+      error: {
+        name: "aeServerError",
+        message: "${e.name}: ${e.message}",
+        source: tokenURL,
+      }
+    });
+    return;
   }
-  
+
   if (resp.ok) {
     let respBody = await resp.json();
     let outResp;
